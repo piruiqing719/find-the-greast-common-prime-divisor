@@ -1,13 +1,14 @@
 function greatestCommonPrimeDivisor(a, b) {
-  var primeDivisors = [];
-  if(a > b){
+  var primeDivisors = [];    //the array to store their prime divisors
+  if(a > b){  //swap a,b
     var temp = a;
     a = b;
     b = temp;
     return greatestCommonPrimeDivisor(a, b);
   }
   else{
-    for(var i = 2; i <= a ; i++){
+  /*this for  loop will push the largest prime divisor into the array*/
+    for(var i = 2; i <= a ; i++){  //the divisor cannot be bigger than a
       if(isPrime(i)){
         if(a % i === 0 && b % i === 0)
           primeDivisors.push(i);
@@ -20,7 +21,8 @@ function greatestCommonPrimeDivisor(a, b) {
     return primeDivisors[primeDivisors.length - 1];
 }
 
-function isPrime(n){
+//this function determines prime or not,return true if prime
+function isPrime(n){  
   for(var i = 2; i <= Math.sqrt(n); i++){
     if(n % i === 0){
       return false;
