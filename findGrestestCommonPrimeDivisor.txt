@@ -1,0 +1,30 @@
+function greatestCommonPrimeDivisor(a, b) {
+  var primeDivisors = [];
+  if(a > b){
+    var temp = a;
+    a = b;
+    b = temp;
+    return greatestCommonPrimeDivisor(a, b);
+  }
+  else{
+    for(var i = 2; i <= a ; i++){
+      if(isPrime(i)){
+        if(a % i === 0 && b % i === 0)
+          primeDivisors.push(i);
+      }
+    }
+  }
+  if(primeDivisors.length === 0)
+    return -1;
+  else 
+    return primeDivisors[primeDivisors.length - 1];
+}
+
+function isPrime(n){
+  for(var i = 2; i <= Math.sqrt(n); i++){
+    if(n % i === 0){
+      return false;
+    }
+  }
+  return true;
+}
